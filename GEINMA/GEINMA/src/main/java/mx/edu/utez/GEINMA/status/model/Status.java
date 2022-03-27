@@ -12,7 +12,7 @@ public class Status {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String description;
-    @OneToMany(mappedBy = "incidence")
+    @OneToMany(mappedBy = "status")
     @JsonIgnore
     private List<Incidence> incidences;
 

@@ -13,7 +13,7 @@ public class Experience {
     @Column(columnDefinition = "text")
     private String description;
     private int score;
-    @OneToOne(mappedBy = "incidence")
+    @OneToOne(mappedBy = "experience")
     @JsonIgnore
     private Incidence incidence;
 

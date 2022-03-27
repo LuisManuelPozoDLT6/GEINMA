@@ -13,19 +13,22 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
     @Autowired
     UserService userService;
-    @Autowired
-    PasswordEncoder passwordEncoder;
 
     @GetMapping("/")
     public ResponseEntity<Message>getAll(){
         return userService.findAll();
     }
 
+    @GetMapping("{role}")
+    public ResponseEntity<Message>getByRole(@PathVariable("role") long id){
+        return userService.findByRole(id);
+    }
+
     @PostMapping("/")
     public ResponseEntity<Message>save(@RequestBody UserDTO userDTO){
         return userService.save(new User(
                 userDTO.getEmail(),
-                passwordEncoder.encode(userDTO.getPassword()),
+                userDTO.getPassword(),
                 userDTO.getPerson(),
                 userDTO.getRole()
         ));

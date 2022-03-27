@@ -28,13 +28,18 @@ public class UserService {
     }
 
     @Transactional(readOnly = true)
+    public ResponseEntity<Message> findByRole(long id){
+        return new ResponseEntity<>(new Message("Ok", false, userRepository.findAllByRoleId(id)), HttpStatus.OK);
+    }
+
+    @Transactional(readOnly = true)
     public Optional<User>getByEmail(String email){
         return userRepository.findByEmail(email);
     }
 
     @Transactional(rollbackFor = {SQLException.class})
     public ResponseEntity<Message>save(User user){
-        if (userRepository.existByEmail(user.getEmail())){
+        if (userRepository.existsByEmail(user.getEmail())){
             return new ResponseEntity<>(new Message("El correo ya esta registrado", true, null), HttpStatus.BAD_REQUEST);
         }
         Person personTemp = user.getPerson();
@@ -45,7 +50,7 @@ public class UserService {
 
     @Transactional(rollbackFor = {SQLException.class})
     public ResponseEntity<Message>update(User user){
-        if (!userRepository.existById(user.getId())){
+        if (!userRepository.existsById(user.getId())){
             return new ResponseEntity<>(new Message("El usuario no existe", true, null), HttpStatus.BAD_REQUEST);
         }
         Person personTemp = user.getPerson();
