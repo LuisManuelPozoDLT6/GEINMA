@@ -17,7 +17,7 @@ public class StatusController {
     @GetMapping("/")
     public ResponseEntity<Message> getAll(){return statusService.findAll();}
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Message>getById(@PathVariable("id") long id){return statusService.findById(id);}
 
     @PostMapping("/")

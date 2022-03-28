@@ -18,11 +18,11 @@ public class ExperienceController {
     @GetMapping("/")
     public ResponseEntity<Message> getAll(){return experienceService.findAll();}
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Message>getById(@PathVariable("id") long id){return experienceService.findById(id);}
 
     @PostMapping("/")
-    public ResponseEntity<Message>saveRol(@RequestBody ExperienceDTO experienceDTO){
+    public ResponseEntity<Message>save(@RequestBody ExperienceDTO experienceDTO){
         return experienceService.save(new Experience(experienceDTO.getDescription(), experienceDTO.getScore()));
     }
 }

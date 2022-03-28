@@ -17,7 +17,7 @@ public class RoleController {
     @GetMapping("/")
     public ResponseEntity<Message> getAll(){return roleService.findAll();}
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Message>getById(@PathVariable("id") long id){return roleService.findById(id);}
 
     @PostMapping("/")

@@ -1,5 +1,6 @@
 package mx.edu.utez.GEINMA.comment.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import mx.edu.utez.GEINMA.incedence.model.Incidence;
 import mx.edu.utez.GEINMA.user.model.User;
 
@@ -16,6 +17,7 @@ public class Comment {
     @JoinColumn(name = "user_id")
     private User user;
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "incidence_is")
     private Incidence incidence;
 

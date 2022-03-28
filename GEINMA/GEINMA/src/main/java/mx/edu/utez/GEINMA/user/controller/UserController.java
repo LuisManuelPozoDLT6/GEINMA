@@ -19,7 +19,7 @@ public class UserController {
         return userService.findAll();
     }
 
-    @GetMapping("{role}")
+    @GetMapping("role/{role}")
     public ResponseEntity<Message>getByRole(@PathVariable("role") long id){
         return userService.findByRole(id);
     }

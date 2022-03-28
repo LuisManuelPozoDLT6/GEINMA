@@ -13,7 +13,7 @@ import java.sql.SQLException;
 
 @Service
 @Transactional
-public class ProductService {
+public class PersonService {
     @Autowired
     PersonRepository personRepository;
 

@@ -30,7 +30,6 @@ public class Incidence {
     @JoinColumn(name = "experience_id")
     private Experience experience;
     @OneToMany(mappedBy = "incidence")
-    @JsonIgnore
     private List<Comment> comments;
 
     public Incidence() {

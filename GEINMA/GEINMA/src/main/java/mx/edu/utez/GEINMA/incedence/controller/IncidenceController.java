@@ -20,17 +20,17 @@ public class IncidenceController {
     @GetMapping("/")
     public ResponseEntity<Message> getAll(){return incidenceService.findAll();}
 
-    @GetMapping("/{client}")
+    @GetMapping("client/{client}")
     public ResponseEntity<Message> getByClient(@PathVariable("client") long id){
         return incidenceService.findAllByClient(id);
     }
 
-    @GetMapping("/{technical}")
+    @GetMapping("technical/{technical}")
     public ResponseEntity<Message> getByTechnical(@PathVariable("technical") long id){
         return incidenceService.findAllByTechnical(id);
     }
 
-    @GetMapping("/{status}")
+    @GetMapping("status/{status}")
     public ResponseEntity<Message> getByStatus(@PathVariable("status") long id){
         return incidenceService.findAllByStatus(id);
     }
