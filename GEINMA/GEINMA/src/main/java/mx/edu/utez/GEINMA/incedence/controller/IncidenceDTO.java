@@ -4,6 +4,8 @@ import mx.edu.utez.GEINMA.experience.model.Experience;
 import mx.edu.utez.GEINMA.status.model.Status;
 import mx.edu.utez.GEINMA.user.model.User;
 
+import java.util.Base64;
+
 public class IncidenceDTO {
     private long id;
     private String description;
@@ -12,11 +14,12 @@ public class IncidenceDTO {
     private User technical;
     private Status status;
     private Experience experience;
+    private String pictureIncidence;
 
     public IncidenceDTO() {
     }
 
-    public IncidenceDTO(long id, String description, String dateRegistered, User client, User technical, Status status, Experience experience) {
+    public IncidenceDTO(long id, String description, String dateRegistered, User client, User technical, Status status, Experience experience, String pictureIncidence) {
         this.id = id;
         this.description = description;
         this.dateRegistered = dateRegistered;
@@ -24,22 +27,25 @@ public class IncidenceDTO {
         this.technical = technical;
         this.status = status;
         this.experience = experience;
+        this.pictureIncidence = pictureIncidence;
     }
 
-    public IncidenceDTO(String description, String dateRegistered, User client, Status status) {
+    public IncidenceDTO(String description, String dateRegistered, User client, Status status, String pictureIncidence) {
         this.description = description;
         this.dateRegistered = dateRegistered;
         this.client = client;
         this.status = status;
+        this.pictureIncidence = pictureIncidence;
     }
 
-    public IncidenceDTO(long id, String description, String dateRegistered, User client, User technical, Status status) {
+    public IncidenceDTO(long id, String description, String dateRegistered, User client, User technical, Status status, String pictureIncidence) {
         this.id = id;
         this.description = description;
         this.dateRegistered = dateRegistered;
         this.client = client;
         this.technical = technical;
         this.status = status;
+        this.pictureIncidence = pictureIncidence;
     }
 
     public long getId() {
@@ -96,5 +102,13 @@ public class IncidenceDTO {
 
     public void setExperience(Experience experience) {
         this.experience = experience;
+    }
+
+    public byte[] getPictureIncidence() {
+        return Base64.getDecoder().decode(pictureIncidence.replace("","+"));
+    }
+
+    public void setPictureIncidence(String pictureIncidence) {
+        this.pictureIncidence = pictureIncidence;
     }
 }

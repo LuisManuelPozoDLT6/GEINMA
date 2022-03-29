@@ -7,6 +7,7 @@ import mx.edu.utez.GEINMA.status.model.Status;
 import mx.edu.utez.GEINMA.user.model.User;
 
 import javax.persistence.*;
+import java.util.Base64;
 import java.util.List;
 
 @Entity
@@ -29,13 +30,15 @@ public class Incidence {
     @OneToOne
     @JoinColumn(name = "experience_id")
     private Experience experience;
+    @Column(name = "picture_incidence", columnDefinition = "blob")
+    private byte[] pictureIncidence;
     @OneToMany(mappedBy = "incidence")
     private List<Comment> comments;
 
     public Incidence() {
     }
 
-    public Incidence(long id, String description, String dateRegistered, User client, User technical, Status status, Experience experience) {
+    public Incidence(long id, String description, String dateRegistered, User client, User technical, Status status, Experience experience, byte[] pictureIncidence) {
         this.id = id;
         this.description = description;
         this.dateRegistered = dateRegistered;
@@ -43,22 +46,25 @@ public class Incidence {
         this.technical = technical;
         this.status = status;
         this.experience = experience;
+        this.pictureIncidence = pictureIncidence;
     }
 
-    public Incidence(String description, String dateRegistered, User client, Status status) {
+    public Incidence(String description, String dateRegistered, User client, Status status, byte[] pictureIncidence) {
         this.description = description;
         this.dateRegistered = dateRegistered;
         this.client = client;
         this.status = status;
+        this.pictureIncidence = pictureIncidence;
     }
 
-    public Incidence(String description, String dateRegistered, User client, User technical, Status status, Experience experience) {
+    public Incidence(String description, String dateRegistered, User client, User technical, Status status, Experience experience, byte[] pictureIncidence) {
         this.description = description;
         this.dateRegistered = dateRegistered;
         this.client = client;
         this.technical = technical;
         this.status = status;
         this.experience= experience;
+        this.pictureIncidence = pictureIncidence;
     }
 
     public long getId() {
@@ -123,5 +129,13 @@ public class Incidence {
 
     public void setExperience(Experience experience) {
         this.experience = experience;
+    }
+
+    public String getPictureIncidence() {
+        return Base64.getEncoder().encodeToString(pictureIncidence);
+    }
+
+    public void setPictureIncidence(byte[] pictureIncidence) {
+        this.pictureIncidence = pictureIncidence;
     }
 }

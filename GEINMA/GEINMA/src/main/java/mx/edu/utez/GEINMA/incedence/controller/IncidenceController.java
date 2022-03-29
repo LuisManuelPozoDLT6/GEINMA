@@ -42,12 +42,12 @@ public class IncidenceController {
 
     @PostMapping("/")
     public ResponseEntity<Message> save(@RequestBody IncidenceDTO incidenceDTO){
-        return incidenceService.save(new Incidence(incidenceDTO.getDescription(), new Date().toString(), incidenceDTO.getClient(), incidenceDTO.getTechnical(), incidenceDTO.getStatus(), incidenceDTO.getExperience()));
+        return incidenceService.save(new Incidence(incidenceDTO.getDescription(), new Date().toString(), incidenceDTO.getClient(), incidenceDTO.getTechnical(), incidenceDTO.getStatus(), incidenceDTO.getExperience(), incidenceDTO.getPictureIncidence()));
     }
 
     @PutMapping("/")
     public ResponseEntity<Message> update(@RequestBody IncidenceDTO incidenceDTO){
-        return incidenceService.save(new Incidence(incidenceDTO.getId(), incidenceDTO.getDescription(), new Date().toString(), incidenceDTO.getClient(), incidenceDTO.getTechnical(), incidenceDTO.getStatus(), incidenceDTO.getExperience()));
+        return incidenceService.save(new Incidence(incidenceDTO.getId(), incidenceDTO.getDescription(), new Date().toString(), incidenceDTO.getClient(), incidenceDTO.getTechnical(), incidenceDTO.getStatus(), incidenceDTO.getExperience(), incidenceDTO.getPictureIncidence()));
     }
 
 
