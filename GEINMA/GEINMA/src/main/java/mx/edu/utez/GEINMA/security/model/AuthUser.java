@@ -1,5 +1,6 @@
 package mx.edu.utez.GEINMA.security.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import mx.edu.utez.GEINMA.person.model.Person;
 import mx.edu.utez.GEINMA.role.model.Role;
 import mx.edu.utez.GEINMA.user.model.User;
@@ -15,6 +16,7 @@ import java.util.stream.Collectors;
 public class AuthUser implements UserDetails {
     private long id;
     private String email;
+    @JsonIgnore
     private String password;
     private Person person;
     public Collection<? extends GrantedAuthority> role;
@@ -28,9 +30,9 @@ public class AuthUser implements UserDetails {
     }
 
     public static AuthUser build(User user){
-        List<GrantedAuthority> role = List(
-                user.getRole().getDescription());
-        return new AuthUser(user.getId(), user.getEmail(), user.getPassword(), user.getPerson(), role);
+        List<GrantedAuthority> roles = new ArrayList<>();
+        roles.add(new SimpleGrantedAuthority(user.getRole().getDescription()));
+        return new AuthUser(user.getId(), user.getEmail(), user.getPassword(), user.getPerson(), roles);
     }
 
     @Override
@@ -50,22 +52,22 @@ public class AuthUser implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
     }
 
     public Person getPerson() {

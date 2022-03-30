@@ -16,7 +16,7 @@ public class User {
     private long id;
     private String email;
     private String password;
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.PERSIST)
     @JoinColumn(name = "person_id")
     private Person person;
     @ManyToOne

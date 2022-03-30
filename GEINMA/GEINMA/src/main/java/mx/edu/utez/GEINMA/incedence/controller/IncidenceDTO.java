@@ -105,7 +105,7 @@ public class IncidenceDTO {
     }
 
     public byte[] getPictureIncidence() {
-        return Base64.getDecoder().decode(pictureIncidence.replace("","+"));
+        return Base64.getDecoder().decode(pictureIncidence.replace(" ","+"));
     }
 
     public void setPictureIncidence(String pictureIncidence) {

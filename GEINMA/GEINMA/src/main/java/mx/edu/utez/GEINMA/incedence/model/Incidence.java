@@ -18,19 +18,19 @@ public class Incidence {
     @Column(columnDefinition = "TEXT")
     private String description;
     private String dateRegistered;
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.PERSIST)
     @JoinColumn(name = "client_id")
     private User client;
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.PERSIST)
     @JoinColumn(name = "technical_id")
     private User technical;
     @ManyToOne
     @JoinColumn(name = "status_id")
     private Status status;
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.PERSIST)
     @JoinColumn(name = "experience_id")
     private Experience experience;
-    @Column(name = "picture_incidence", columnDefinition = "blob")
+    @Column(name = "picture_incidence", columnDefinition = "longblob")
     private byte[] pictureIncidence;
     @OneToMany(mappedBy = "incidence")
     private List<Comment> comments;

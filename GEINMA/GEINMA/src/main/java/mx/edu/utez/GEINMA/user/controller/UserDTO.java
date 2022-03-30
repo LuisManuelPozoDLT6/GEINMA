@@ -1,5 +1,6 @@
 package mx.edu.utez.GEINMA.user.controller;
 
+import mx.edu.utez.GEINMA.person.controller.PersonDTO;
 import mx.edu.utez.GEINMA.person.model.Person;
 import mx.edu.utez.GEINMA.role.model.Role;
 
@@ -7,13 +8,13 @@ public class UserDTO {
     private long id;
     private String email;
     private String password;
-    private Person person;
+    private PersonDTO person;
     private Role role;
 
     public UserDTO() {
     }
 
-    public UserDTO(long id, String email, String password, Person person, Role role) {
+    public UserDTO(long id, String email, String password, PersonDTO person, Role role) {
         this.id = id;
         this.email = email;
         this.password = password;
@@ -21,7 +22,7 @@ public class UserDTO {
         this.role = role;
     }
 
-    public UserDTO(String email, String password, Person person, Role role) {
+    public UserDTO(String email, String password, PersonDTO person, Role role) {
         this.email = email;
         this.password = password;
         this.person = person;
@@ -52,11 +53,11 @@ public class UserDTO {
         this.password = password;
     }
 
-    public Person getPerson() {
+    public PersonDTO getPerson() {
         return person;
     }
 
-    public void setPerson(Person person) {
+    public void setPerson(PersonDTO person) {
         this.person = person;
     }
 

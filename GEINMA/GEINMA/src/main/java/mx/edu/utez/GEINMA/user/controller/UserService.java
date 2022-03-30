@@ -42,9 +42,6 @@ public class UserService {
         if (userRepository.existsByEmail(user.getEmail())){
             return new ResponseEntity<>(new Message("El correo ya esta registrado", true, null), HttpStatus.BAD_REQUEST);
         }
-        Person personTemp = user.getPerson();
-        personTemp = personRepository.saveAndFlush(personTemp);
-        user.setPerson(personTemp);
         return new ResponseEntity<>(new Message("Ok", false, userRepository.saveAndFlush(user)), HttpStatus.OK);
     }
 

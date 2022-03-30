@@ -63,7 +63,7 @@ public class PersonDTO {
     }
 
     public byte[] getImageProfile() {
-        return Base64.getDecoder().decode(imageProfile.replace("", "+"));
+        return Base64.getDecoder().decode(imageProfile.replace(" ", "+"));
     }
 
     public void setImageProfile(String imageProfile) {

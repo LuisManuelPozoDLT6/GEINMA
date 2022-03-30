@@ -16,7 +16,7 @@ public class Person {
     @Column(name = "second_surname")
     private String secondSurname;
     private String phone;
-    @Column(name = "image_profile", columnDefinition = "blob")
+    @Column(name = "image_profile", columnDefinition = "longblob")
     private byte[] imageProfile;
     @OneToOne(mappedBy = "person")
     @JsonIgnore
