@@ -18,10 +18,10 @@ public class Incidence {
     @Column(columnDefinition = "TEXT")
     private String description;
     private String dateRegistered;
-    @OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.PERSIST)
+    @ManyToOne
     @JoinColumn(name = "client_id")
     private User client;
-    @OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.PERSIST)
+    @ManyToOne
     @JoinColumn(name = "technical_id")
     private User technical;
     @ManyToOne
