@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/user")
 @CrossOrigin(origins = {"*"})
@@ -26,6 +28,11 @@ public class UserController {
     @GetMapping("role/{role}")
     public ResponseEntity<Message> getByRole(@PathVariable("role") long id) {
         return userService.findByRole(id);
+    }
+
+    @GetMapping("email/{email}")
+    public Optional<User> getByEmail(@PathVariable("email") String email){
+        return userService.getByEmail(email);
     }
 
     @PostMapping("/")

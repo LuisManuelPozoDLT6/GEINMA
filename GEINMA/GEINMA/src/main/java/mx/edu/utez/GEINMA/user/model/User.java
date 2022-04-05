@@ -22,10 +22,10 @@ public class User {
     @ManyToOne
     @JoinColumn(name = "role_id")
     private Role role;
-    @OneToMany(mappedBy = "client")
+    @OneToMany(mappedBy = "client", cascade = {CascadeType.ALL})
     @JsonIgnore
     private List<Incidence> incidencesClient;
-    @OneToMany(mappedBy = "technical")
+    @OneToMany(mappedBy = "technical", cascade = {CascadeType.ALL})
     @JsonIgnore
     private List<Incidence> incidencesTechnical;
     @OneToMany(mappedBy = "user")
